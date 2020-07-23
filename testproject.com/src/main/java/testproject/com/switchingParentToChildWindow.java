@@ -13,16 +13,17 @@ public class switchingParentToChildWindow {
 		System.setProperty("webdriver.gecko.driver", "C:\\Users\\Mahee\\Work\\drivers\\windows\\geckodriver.exe");
 		WebDriver driver = new FirefoxDriver();
 		driver.get(
-				"https://accounts.google.com/signin/v2/identifier?service=accountsettings&hl=en-GB&continue=https%3A%2F%2Fmyaccount.google.com%2Fintro%3Futm_source%3DOGB%26tab%3Dwk%26utm_medium%3Dapp&flowName=GlifWebSignIn&flowEntry=ServiceLogin");
+				"https://support.google.com/accounts/answer/2917834?visit_id=637289772388345810-3277509337&p=signin_privatebrowsing&hl=en-GB&rd=1");
 		driver.manage().window().maximize();
 		System.out.println(driver.getTitle());
-		driver.findElement(By.xpath("/html/body/div[1]/div/footer/ul/li[1]/a")).click();
+		driver.findElement(By.xpath("/html/body/div[2]/header/div[4]/div[1]/div/div/div[2]/span/a/span")).click();
 		System.out.println(driver.getTitle());
 		Set<String> ids = driver.getWindowHandles();
 		Iterator<String> it = ids.iterator();
 		String parentid = it.next();
 		String childid = it.next();
-		driver.switchTo().window("childid");
+		driver.switchTo().window(childid);
+		driver.findElement(By.xpath("//a[@class='WpHeLc']")).click();
 		System.out.println(driver.getTitle());
 
 	}
